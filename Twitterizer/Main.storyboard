@@ -47,6 +47,13 @@
                                     <action selector="hashTagButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eq8-Xp-d1H"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AF9-1N-kmU">
+                                <rect key="frame" x="273" y="348" width="55" height="30"/>
+                                <state key="normal" title="Reverse"/>
+                                <connections>
+                                    <action selector="reverseWords:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xFB-Hv-h7d"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -54,6 +61,8 @@
                             <constraint firstItem="nof-NC-EOt" firstAttribute="top" secondItem="JLy-O5-Fie" secondAttribute="bottom" constant="8" symbolic="YES" id="C7Q-fn-i6X"/>
                             <constraint firstItem="qu1-LO-aTp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="J97-3V-76l"/>
                             <constraint firstItem="JLy-O5-Fie" firstAttribute="centerX" secondItem="nof-NC-EOt" secondAttribute="centerX" id="OAf-dF-u76"/>
+                            <constraint firstItem="AF9-1N-kmU" firstAttribute="centerX" secondItem="kcM-sl-zng" secondAttribute="centerX" id="VqZ-vY-n5z"/>
+                            <constraint firstItem="AF9-1N-kmU" firstAttribute="top" secondItem="kcM-sl-zng" secondAttribute="bottom" constant="8" symbolic="YES" id="ZXw-pN-Kvf"/>
                             <constraint firstItem="qu1-LO-aTp" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="aXG-QF-ndG"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="nof-NC-EOt" secondAttribute="bottom" constant="311" id="eRe-Uh-mAg"/>
                             <constraint firstItem="kcM-sl-zng" firstAttribute="centerX" secondItem="nof-NC-EOt" secondAttribute="centerX" id="lDY-oC-VSo"/>

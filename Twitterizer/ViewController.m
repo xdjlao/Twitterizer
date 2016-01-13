@@ -32,6 +32,27 @@
     self.charactersTyped.text = [NSString stringWithFormat:@"%lu", length];
 }
 
+- (IBAction)reverseWords:(id)sender {
+    NSArray *words = [self.textView.text componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSMutableString *reversed = [NSMutableString new];
+    for (NSString *word in words) {
+        if ([word rangeOfString:@"#"].location == NSNotFound) {
+            NSInteger index = [word length];
+            NSMutableString *reversedWord = [NSMutableString new];
+            while (index > 0) {
+                index--;
+                NSRange subStrRange = NSMakeRange(index, 1);
+                [reversedWord appendString:[word substringWithRange:subStrRange]];
+            }
+            [reversed appendString:[NSString stringWithFormat:@"%@ ", reversedWord]];
+        } else {
+            [reversed appendString:[NSString stringWithFormat:@"%@ ", word]];
+        }
+    }
+    self.textView.text = reversed;
+}
+
+
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     return textView.text.length + (text.length - range.length) <= 140;
