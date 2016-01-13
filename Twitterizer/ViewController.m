@@ -8,9 +8,11 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <UITextViewDelegate>
 
 @property NSArray *vowels;
+
+@property (weak, nonatomic) IBOutlet UILabel *charactersTyped;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 
 @end
@@ -19,8 +21,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.textView.delegate = self;
     self.vowels = [[NSArray alloc] initWithObjects:@"a", @"e", @"i", @"o", @"u", nil];
-    // Do any additional setup after loading the view, typically from a nib.
+}
+
+-(void)textViewDidChange:(UITextView *)textView
+{
+    NSUInteger length;
+    length = [textView.text length];
+    self.charactersTyped.text = [NSString stringWithFormat:@"%lu", length];
 }
 
 - (IBAction)twitterizeButton:(UIButton *)sender {
@@ -33,8 +42,8 @@
             [consonant appendString:[NSString stringWithFormat:@"%c", [text characterAtIndex:i]]];
         }
     }
-    
     self.textView.text = consonant;
+    [self textViewDidChange:self.textView];
 }
 
 @end
