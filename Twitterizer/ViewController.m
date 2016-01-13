@@ -10,18 +10,31 @@
 
 @interface ViewController ()
 
+@property NSArray *vowels;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.vowels = [[NSArray alloc] initWithObjects:@"a", @"e", @"i", @"o", @"u", nil];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)twitterizeButton:(UIButton *)sender {
+    NSString *text = self.textView.text;
+    NSMutableString *consonant = [NSMutableString new];
+    NSUInteger length = text.length;
+    
+    for (int i = 0; i < length; i++) {
+        if (![self.vowels containsObject: [NSString stringWithFormat:@"%c",[text characterAtIndex:i]]]) {
+            [consonant appendString:[NSString stringWithFormat:@"%c", [text characterAtIndex:i]]];
+        }
+    }
+    
+    self.textView.text = consonant;
 }
 
 @end
