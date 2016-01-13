@@ -36,6 +36,19 @@
 {
     return textView.text.length + (text.length - range.length) <= 140;
 }
+- (IBAction)hashTagButton:(UIButton *)sender {
+    NSArray *words = [self.textView.text componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSMutableString *hashedString = [NSMutableString new];
+    for(int i = 0; i < words.count; i++) {
+        if (i%2 == 0) {
+            [hashedString appendString:[NSString stringWithFormat:@"#%@ ", [words objectAtIndex:i]]];
+        } else {
+            [hashedString appendString:[NSString stringWithFormat:@"%@ ", [words objectAtIndex:i]]];
+        }
+    }
+    NSString *doneString = [[NSString stringWithString:hashedString] substringToIndex:[hashedString length] - 1];
+    self.textView.text = doneString;
+}
 
 - (IBAction)twitterizeButton:(UIButton *)sender {
     NSString *text = self.textView.text;

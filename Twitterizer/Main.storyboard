@@ -40,6 +40,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kcM-sl-zng">
+                                <rect key="frame" x="271" y="310" width="58" height="30"/>
+                                <state key="normal" title="Hashtag"/>
+                                <connections>
+                                    <action selector="hashTagButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eq8-Xp-d1H"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -49,7 +56,9 @@
                             <constraint firstItem="JLy-O5-Fie" firstAttribute="centerX" secondItem="nof-NC-EOt" secondAttribute="centerX" id="OAf-dF-u76"/>
                             <constraint firstItem="qu1-LO-aTp" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="aXG-QF-ndG"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="nof-NC-EOt" secondAttribute="bottom" constant="311" id="eRe-Uh-mAg"/>
+                            <constraint firstItem="kcM-sl-zng" firstAttribute="centerX" secondItem="nof-NC-EOt" secondAttribute="centerX" id="lDY-oC-VSo"/>
                             <constraint firstItem="qu1-LO-aTp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="vPI-Rw-EGJ"/>
+                            <constraint firstItem="kcM-sl-zng" firstAttribute="top" secondItem="nof-NC-EOt" secondAttribute="bottom" constant="21" id="vt8-mn-80b"/>
                             <constraint firstItem="JLy-O5-Fie" firstAttribute="top" secondItem="qu1-LO-aTp" secondAttribute="bottom" constant="32" id="xBJ-G2-67y"/>
                         </constraints>
                     </view>
