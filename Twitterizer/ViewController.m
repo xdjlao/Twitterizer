@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.textView.delegate = self;
-    self.vowels = [[NSArray alloc] initWithObjects:@"a", @"e", @"i", @"o", @"u", nil];
+    self.vowels = [[NSArray alloc] initWithObjects:@"a",@"A",@"e",@"E",@"i",@"I",@"o",@"O",@"u",@"U", nil];
 }
 
 -(void)textViewDidChange:(UITextView *)textView
@@ -30,6 +30,11 @@
     NSUInteger length;
     length = [textView.text length];
     self.charactersTyped.text = [NSString stringWithFormat:@"%lu", length];
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    return textView.text.length + (text.length - range.length) <= 140;
 }
 
 - (IBAction)twitterizeButton:(UIButton *)sender {
