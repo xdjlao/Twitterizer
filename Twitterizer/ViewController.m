@@ -29,7 +29,7 @@
 {
     NSUInteger length;
     length = [textView.text length];
-    self.charactersTyped.text = [NSString stringWithFormat:@"%lu", length];
+    self.charactersTyped.text = [NSString stringWithFormat:@"%lu", (unsigned long)length];
 }
 
 - (IBAction)reverseWords:(id)sender {
@@ -49,7 +49,8 @@
             [reversed appendString:[NSString stringWithFormat:@"%@ ", word]];
         }
     }
-    self.textView.text = reversed;
+    NSString *normalReversed = [NSString stringWithFormat:@"%@", reversed];
+    self.textView.text = [self removeEndSpace:normalReversed];
 }
 
 
@@ -62,13 +63,16 @@
     NSMutableString *hashedString = [NSMutableString new];
     for(int i = 0; i < words.count; i++) {
         if (i%2 == 0) {
-            [hashedString appendString:[NSString stringWithFormat:@"#%@ ", [words objectAtIndex:i]]];
+            if ([[words objectAtIndex:i] rangeOfString:@"#"].location == NSNotFound) {
+                [hashedString appendString:[NSString stringWithFormat:@"#%@ ", [words objectAtIndex:i]]];
+            } else {
+                [hashedString appendString:[NSString stringWithFormat:@"%@ ", [words objectAtIndex:i]]];
+            }
         } else {
             [hashedString appendString:[NSString stringWithFormat:@"%@ ", [words objectAtIndex:i]]];
         }
     }
-    NSString *doneString = [[NSString stringWithString:hashedString] substringToIndex:[hashedString length] - 1];
-    self.textView.text = doneString;
+    self.textView.text = [self removeEndSpace:hashedString];
 }
 
 - (IBAction)twitterizeButton:(UIButton *)sender {
@@ -83,6 +87,11 @@
     }
     self.textView.text = consonant;
     [self textViewDidChange:self.textView];
+}
+
+- (NSString *)removeEndSpace:(NSString *)string {
+    NSString *toRemoveString = [[NSString stringWithString:string] substringToIndex:[string length] - 1];
+    return toRemoveString;
 }
 
 @end
